@@ -1,0 +1,2 @@
+ttkthemes == 2.3.0
+pygubu == 0.9.8.2
