@@ -1,4 +1,4 @@
-from tkinter import ttk, messagebox, Menu, END, font # Normal Tkinter.* widgets are not themed!
+from tkinter import Tk, ttk, messagebox, Menu, END, font # Normal Tkinter.* widgets are not themed!
 from ttkthemes import ThemedTk
 import pygubu
 
@@ -53,7 +53,7 @@ class Application(pygubu.TkApplication):
         self.label_total['text'] = 'Q 0.00'
 
 
-window = ThemedTk(theme="equilux")
+window = Tk()
 app = Application(window)
 window.title('Ventas')
 window.mainloop()
