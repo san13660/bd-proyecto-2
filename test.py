@@ -20,7 +20,10 @@ class Ui(QtWidgets.QMainWindow):
         self.le_facturacion_nombre.returnPressed.connect(self.enter_nombre)
         self.le_facturacion_idproducto.returnPressed.connect(self.enter_id_producto)
         self.le_facturacion_cantidad.returnPressed.connect(self.click_ingresar_lineafactura)
+        
         self.total = 0.0
+        self.lineas_factura = []
+
         self.show()
     
 
@@ -41,13 +44,16 @@ class Ui(QtWidgets.QMainWindow):
             self.total += float(subtotal)
             self.lbl_facturacion_total.setText('Q ' + str(self.total))
 
+            self.lineas_factura.append((producto[0][0], cantidad, subtotal))
+
             self.le_facturacion_cantidad.setDisabled(True)
             self.le_facturacion_cantidad.setText('1')
             self.le_facturacion_idproducto.setText('')
             self.le_facturacion_idproducto.setFocus()
 
     def click_ingresar_factura(self):
-        if ingresar_factura(self.le_facturacion_nit.text(), datetime.date.today().strftime("%Y-%m-%d %H:%M:%S"), self.total):
+        if ingresar_factura(self.le_facturacion_nit.text(), datetime.date.today().strftime("%Y-%m-%d %H:%M:%S"), self.total, self.lineas_factura):
+
             self.le_facturacion_nit.setText('')
             self.le_facturacion_nombre.setText('')
             self.le_facturacion_idproducto.setText('')
@@ -61,6 +67,7 @@ class Ui(QtWidgets.QMainWindow):
             self.tw_facturacion.setRowCount(0)
 
             self.total = 0
+            self.lineas_factura = []
             self.lbl_facturacion_total.setText('Q 0.00')
 
             self.le_facturacion_nit.setFocus()
@@ -79,6 +86,7 @@ class Ui(QtWidgets.QMainWindow):
         self.tw_facturacion.setRowCount(0)
 
         self.total = 0
+        self.lineas_factura = []
         self.lbl_facturacion_total.setText('Q 0.00')
 
         self.le_facturacion_nit.setFocus()

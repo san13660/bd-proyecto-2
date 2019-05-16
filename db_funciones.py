@@ -210,8 +210,8 @@ def ingresar_cliente(nit, nombre):
         return result
 
 
-def ingresar_factura(nit, fecha, total): 
-    if nit == '' or fecha == '' or total == 0:
+def ingresar_factura(nit, fecha, total, lineas_factura): 
+    if nit == '' or fecha == '' or total == 0 or len(lineas_factura) == 0:
         return False
 
     result = False
@@ -227,7 +227,29 @@ def ingresar_factura(nit, fecha, total):
         );
         """,
         (str(nit), str(fecha), str(total)))
+
+        cursor.execute("""
+        SELECT id
+        FROM factura
+        ORDER BY id DESC
+        LIMIT 1;
+        """)
+
+        row = cursor.fetchone()
+
+        for linea_factura in lineas_factura:
+            cursor.execute("""
+            INSERT INTO linea_factura(
+                id_factura, id_producto, cantidad, sub_total
+            )
+            VALUES(
+                %s, %s, %s, %s
+            );
+            """,
+            (str(row[0]), str(linea_factura[0]), str(linea_factura[1]), str(linea_factura[2])))
+
         connection.commit()
+        
         result = True
     except (Exception, psycopg2.DatabaseError) as error :
         print ("Error al insertar factura", error)
@@ -236,3 +258,65 @@ def ingresar_factura(nit, fecha, total):
         if(connection):
             cursor.close()
         return result
+
+def consultar_facturas(id='', nit='', fecha=None): 
+    rows = []
+    try:
+        cursor = connection.cursor()
+    
+        if id != '' and nit == '' and fecha == None:
+            cursor.execute("""
+            SELECT *
+            FROM factura
+            WHERE id LIKE %s;
+            """,
+            (str(id) + '%',))
+        elif id == '' and nit != '' and fecha == None:
+            cursor.execute("""
+            SELECT *
+            FROM factura
+            WHERE nit LIKE %s;
+            """,
+            ('%' + str(nit) + '%',))
+        elif id != '' and nit != '' and fecha == None:
+            cursor.execute("""
+            SELECT *
+            FROM factura
+            WHERE id LIKE %s and nit LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(nit) + '%',))
+        elif id != '' and nit == '' and fecha != None:
+            cursor.execute("""
+            SELECT *
+            FROM factura
+            WHERE id LIKE %s and fecha == %s;
+            """,
+            (str(id) + '%', str(fecha),))
+        elif id == '' and nit != '' and fecha != None:
+            cursor.execute("""
+            SELECT *
+            FROM factura
+            WHERE nit LIKE %s and fecha == %s;
+            """,
+            ('%' + str(nit) + '%', str(fecha),))
+        elif id != '' and nit != '' and fecha != None:
+            cursor.execute("""
+            SELECT *
+            FROM factura
+            WHERE id LIKE %s and nit LIKE %s and fecha == %s;
+            """,
+            (str(id) + '%', '%' + str(nit) + '%', str(fecha)))
+        else:
+            cursor.execute("""
+            SELECT *
+            FROM factura;
+            """)
+        connection.commit()
+        rows = cursor.fetchall()
+    except (Exception, psycopg2.DatabaseError) as error :
+        print ("Error al leer datos de facturas", error)
+        connection.rollback()
+    finally:
+        if(connection):
+            cursor.close()
+        return rows
