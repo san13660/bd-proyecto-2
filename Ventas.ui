@@ -129,7 +129,7 @@
      <string notr="true">background-color: rgb(241, 209, 181)</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tabFacturacion">
      <property name="font">
@@ -506,7 +506,7 @@
        <string>ID Factura</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditidFact">
+     <widget class="QLineEdit" name="le_historialventas_id">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -524,7 +524,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNit_2">
+     <widget class="QLineEdit" name="le_historialventas_nit">
       <property name="geometry">
        <rect>
         <x>200</x>
@@ -563,7 +563,7 @@
        <string>NIT</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonBuscar">
+     <widget class="QPushButton" name="pb_historialventas_buscar">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -587,7 +587,7 @@
        <string>Buscar</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidgetFacturas">
+     <widget class="QTableWidget" name="tw_historialventas">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -676,7 +676,7 @@
        <string>Fecha</string>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit">
+     <widget class="QDateEdit" name="de_historialventas_fecha">
       <property name="geometry">
        <rect>
         <x>370</x>
