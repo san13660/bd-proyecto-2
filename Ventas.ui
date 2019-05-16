@@ -249,6 +249,9 @@
       </property>
      </widget>
      <widget class="QLineEdit" name="le_facturacion_idproducto">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -267,6 +270,9 @@
       </property>
      </widget>
      <widget class="QLineEdit" name="le_facturacion_cantidad">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -285,6 +291,9 @@
       </property>
      </widget>
      <widget class="QLineEdit" name="le_facturacion_nombre">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>310</x>
