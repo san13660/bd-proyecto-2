@@ -945,7 +945,7 @@
      <attribute name="title">
       <string>Clientes</string>
      </attribute>
-     <widget class="QLabel" name="labelMarca_2">
+     <widget class="QLabel" name="l_clientes_nit">
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -990,7 +990,7 @@
        <string>Buscar</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNombreProd_2">
+     <widget class="QLineEdit" name="le_clientes_nombre">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -1008,7 +1008,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditMarca_2">
+     <widget class="QLineEdit" name="le_clientes_nit">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -1026,7 +1026,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelNombreProd_2">
+     <widget class="QLabel" name="l_clientes_nombre">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1047,7 +1047,7 @@
        <string>Nombre</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonBuscar_4">
+     <widget class="QPushButton" name="pb_clientes_ingresar">
       <property name="geometry">
        <rect>
         <x>630</x>
@@ -1071,7 +1071,7 @@
        <string>Ingresar</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidgetProductos_2">
+     <widget class="QTableWidget" name="tw_clientes">
       <property name="geometry">
        <rect>
         <x>120</x>
