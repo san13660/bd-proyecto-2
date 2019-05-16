@@ -631,17 +631,17 @@
       </attribute>
       <column>
        <property name="text">
+        <string>ID factura</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
         <string>NIT</string>
        </property>
       </column>
       <column>
        <property name="text">
         <string>Cliente</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>ID factura</string>
        </property>
       </column>
       <column>
@@ -658,7 +658,7 @@
      <widget class="QLabel" name="labelFecha">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>410</x>
         <y>50</y>
         <width>71</width>
         <height>21</height>
@@ -679,7 +679,7 @@
      <widget class="QDateEdit" name="de_historialventas_fecha">
       <property name="geometry">
        <rect>
-        <x>370</x>
+        <x>390</x>
         <y>80</y>
         <width>121</width>
         <height>21</height>
@@ -693,6 +693,19 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cb_historialventas_fecha">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>80</y>
+        <width>16</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
