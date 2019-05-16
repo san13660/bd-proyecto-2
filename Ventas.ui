@@ -129,7 +129,7 @@
      <string notr="true">background-color: rgb(241, 209, 181)</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabFacturacion">
      <property name="font">
