@@ -4,7 +4,7 @@ CREATE TABLE cliente (
 	
 
 CREATE TABLE factura (
-	id VARCHAR(10) PRIMARY KEY,
+	id SERIAL PRIMARY KEY,
 	nit VARCHAR(10) REFERENCES cliente(nit),
 	fecha DATE,
 	total REAL);
@@ -18,8 +18,8 @@ CREATE TABLE producto (
 	
 
 CREATE TABLE linea_factura (
-	id VARCHAR(10) PRIMARY KEY,
-	id_factura VARCHAR(10) REFERENCES factura(id),
+	id SERIAL PRIMARY KEY,
+	id_factura INTEGER REFERENCES factura(id),
 	id_producto VARCHAR(10) REFERENCES producto(id),
 	cantidad INTEGER,
 	sub_total REAL);

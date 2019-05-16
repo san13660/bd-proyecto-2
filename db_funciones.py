@@ -4,7 +4,7 @@ from psycopg2 import Error
 connection = None
 
 try:
-    connection = psycopg2.connect( host='localhost', user='postgres', password='basesdedatos', dbname='proyecto-2' )
+    connection = psycopg2.connect( host='localhost', user='postgres', password='CURIE123', dbname='proyecto-2' )
     
     connection.autocommit=False
 
@@ -203,6 +203,34 @@ def ingresar_cliente(nit, nombre):
         result = True
     except (Exception, psycopg2.DatabaseError) as error :
         print ("Error al insertar datos de clientes", error)
+        connection.rollback()
+    finally:
+        if(connection):
+            cursor.close()
+        return result
+
+
+def ingresar_factura(nit, fecha, total): 
+    if nit == '' or fecha == '' or total == 0:
+        return False
+
+    result = False
+    try:
+        cursor = connection.cursor()
+    
+        cursor.execute("""
+        INSERT INTO factura(
+            nit, fecha, total
+        )
+        VALUES(
+            %s, %s, %s
+        );
+        """,
+        (str(nit), str(fecha), str(total)))
+        connection.commit()
+        result = True
+    except (Exception, psycopg2.DatabaseError) as error :
+        print ("Error al insertar factura", error)
         connection.rollback()
     finally:
         if(connection):
