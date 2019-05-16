@@ -129,7 +129,7 @@
      <string notr="true">background-color: rgb(241, 209, 181)</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="tabFacturacion">
      <property name="font">
@@ -931,9 +931,14 @@
       </column>
      </widget>
     </widget>
-    <widget class="QWidget" name="tabGestProductos">
+    <widget class="QWidget" name="tabIngresoProd">
      <attribute name="title">
-      <string>Gestión productos</string>
+      <string>Ingreso productos</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabCustoms">
+     <attribute name="title">
+      <string>Customs</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="tabClientes">
