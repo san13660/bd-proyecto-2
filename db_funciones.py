@@ -15,7 +15,7 @@ except (Exception, psycopg2.DatabaseError) as error :
 
 
 def consultar_clientes(nit='', nombre=''): 
-    rows = None
+    rows = []
     try:
         cursor = connection.cursor()
     
@@ -47,11 +47,37 @@ def consultar_clientes(nit='', nombre=''):
             """)
         connection.commit()
         rows = cursor.fetchall()
-        print(rows)
     except (Exception, psycopg2.DatabaseError) as error :
-        print ("Error al insertar datos de prueba", error)
+        print ("Error al leer datos de clientes", error)
         connection.rollback()
     finally:
         if(connection):
             cursor.close()
         return rows
+
+def ingresar_cliente(nit, nombre): 
+    if nit == '' or nombre == '' or len(nit) < 7 or len(nit) > 8:
+        return False
+
+    result = False
+    try:
+        cursor = connection.cursor()
+    
+        cursor.execute("""
+        INSERT INTO cliente(
+            nit, nombre
+        )
+        VALUES(
+            %s, %s
+        );
+        """,
+        (str(nit), str(nombre)))
+        connection.commit()
+        result = True
+    except (Exception, psycopg2.DatabaseError) as error :
+        print ("Error al insertar datos de clientes", error)
+        connection.rollback()
+    finally:
+        if(connection):
+            cursor.close()
+        return result
