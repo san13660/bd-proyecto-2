@@ -966,7 +966,7 @@
        <string>NIT</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonBuscar_3">
+     <widget class="QPushButton" name="pb_clientes_buscar">
       <property name="geometry">
        <rect>
         <x>520</x>
