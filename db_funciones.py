@@ -4,7 +4,7 @@ from psycopg2 import Error
 connection = None
 
 try:
-    connection = psycopg2.connect( host='localhost', user='postgres', password='CURIE123', dbname='proyecto-2' )
+    connection = psycopg2.connect( host='localhost', user='postgres', password='basesdedatos', dbname='proyecto-2' )
     
     connection.autocommit=False
 
@@ -54,6 +54,133 @@ def consultar_clientes(nit='', nombre=''):
         if(connection):
             cursor.close()
         return rows
+
+
+def consultar_productos(id='', nombre='', categoria='', marca=''): 
+    rows = []
+    try:
+        cursor = connection.cursor()
+    
+        if id != '' and nombre == '' and categoria == '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s;
+            """,
+            (str(id) + '%',))
+        elif id != '' and nombre != '' and categoria == '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and nombre LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(nombre) + '%',))
+        elif id != '' and nombre == '' and categoria != '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and categoria LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(categoria) + '%',))
+        elif id != '' and nombre == '' and categoria == '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and marca LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(marca) + '%',))
+        elif id != '' and nombre != '' and categoria != '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and nombre LIKE %s and categoria LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(nombre) + '%', '%' + str(categoria) + '%',))
+        elif id != '' and nombre == '' and categoria != '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and categoria LIKE %s and marca LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(categoria) + '%', '%' + str(marca) + '%',))
+        elif id != '' and nombre != '' and categoria == '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and nombre LIKE %s and marca LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(nombre) + '%', '%' + str(marca) + '%',))
+        elif id == '' and nombre != '' and categoria == '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE nombre LIKE %s;
+            """,
+            ('%' + str(nombre) + '%',))
+        elif id == '' and nombre != '' and categoria == '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE nombre LIKE %s and marca LIKE %s;
+            """,
+            ('%' + str(nombre) + '%', '%' + str(marca) + '%',))
+        elif id == '' and nombre != '' and categoria != '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE nombre LIKE %s and categoria LIKE %s;
+            """,
+            ('%' + str(nombre) + '%', '%' + str(categoria) + '%',))
+        elif id == '' and nombre != '' and categoria != '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE nombre LIKE %s and categoria LIKE %s and marca LIKE %s;
+            """,
+            ('%' + str(nombre) + '%', '%' + str(categoria) + '%', '%' + str(marca) + '%',))
+        elif id == '' and nombre == '' and categoria != '' and marca == '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE categoria LIKE %s;
+            """,
+            ('%' + str(categoria) + '%',))
+        elif id == '' and nombre == '' and categoria != '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE categoria LIKE %s and marca LIKE %s;
+            """,
+            ('%' + str(categoria) + '%', '%' + str(marca) + '%',))
+        elif id == '' and nombre == '' and categoria == '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE marca LIKE %s;
+            """,
+            ('%' + str(marca) + '%',))
+        elif id != '' and nombre != '' and categoria != '' and marca != '':
+            cursor.execute("""
+            SELECT *
+            FROM producto
+            WHERE id LIKE %s and nombre LIKE %s and categoria LIKE %s and marca LIKE %s;
+            """,
+            (str(id) + '%', '%' + str(nombre) + '%', '%' + str(categoria) + '%', '%' + str(marca) + '%'))
+        else:
+            cursor.execute("""
+            SELECT *
+            FROM producto;
+            """)
+        connection.commit()
+        rows = cursor.fetchall()
+    except (Exception, psycopg2.DatabaseError) as error :
+        print ("Error al leer datos de productos", error)
+        connection.rollback()
+    finally:
+        if(connection):
+            cursor.close()
+        return rows
+
 
 def ingresar_cliente(nit, nombre): 
     if nit == '' or nombre == '' or len(nit) < 7 or len(nit) > 8:

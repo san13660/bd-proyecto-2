@@ -129,7 +129,7 @@
      <string notr="true">background-color: rgb(241, 209, 181)</string>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabFacturacion">
      <property name="font">
@@ -230,7 +230,7 @@
        <string>Cantidad</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNit">
+     <widget class="QLineEdit" name="le_facturacion_nit">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -248,7 +248,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditidProd">
+     <widget class="QLineEdit" name="le_facturacion_idproducto">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -266,7 +266,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditCantidad">
+     <widget class="QLineEdit" name="le_facturacion_cantidad">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -284,7 +284,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNombre">
+     <widget class="QLineEdit" name="le_facturacion_nombre">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -302,7 +302,7 @@
        <string notr="true">background-color: rgb(255, 255, 255)</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonIngresar">
+     <widget class="QPushButton" name="pb_facturacion_ingresar">
       <property name="geometry">
        <rect>
         <x>510</x>
@@ -326,7 +326,7 @@
        <string>Ingresar</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonFacturar">
+     <widget class="QPushButton" name="pb_facturacion_facturar">
       <property name="geometry">
        <rect>
         <x>250</x>
@@ -350,12 +350,12 @@
        <string>Facturar</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelTotal">
+     <widget class="QLabel" name="lbl_facturacion_total">
       <property name="geometry">
        <rect>
-        <x>590</x>
+        <x>480</x>
         <y>490</y>
-        <width>101</width>
+        <width>251</width>
         <height>21</height>
        </rect>
       </property>
@@ -371,7 +371,7 @@
        <string>Q 0.00</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidgetitems">
+     <widget class="QTableWidget" name="tw_facturacion">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -400,6 +400,9 @@
       </property>
       <property name="midLineWidth">
        <number>0</number>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
       <property name="rowCount">
        <number>0</number>
@@ -436,7 +439,7 @@
        </property>
       </column>
      </widget>
-     <widget class="QPushButton" name="pushButtonSimular">
+     <widget class="QPushButton" name="pb_facturacion_simular">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -605,6 +608,9 @@
       <property name="midLineWidth">
        <number>0</number>
       </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
       <property name="rowCount">
        <number>0</number>
       </property>
@@ -685,7 +691,7 @@
      <attribute name="title">
       <string>Productos</string>
      </attribute>
-     <widget class="QLineEdit" name="lineEditidProd_2">
+     <widget class="QLineEdit" name="le_productos_id">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -724,7 +730,7 @@
        <string>ID Producto</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNombreProd">
+     <widget class="QLineEdit" name="le_productos_nombre">
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -763,7 +769,7 @@
        <string>Nombre</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditMarca">
+     <widget class="QLineEdit" name="le_productos_marca">
       <property name="geometry">
        <rect>
         <x>350</x>
@@ -802,7 +808,7 @@
        <string>Categoría</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditCategoria">
+     <widget class="QLineEdit" name="le_productos_categoria">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -841,7 +847,7 @@
        <string>Marca</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButtonBuscar_2">
+     <widget class="QPushButton" name="pb_productos_buscar">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -865,7 +871,7 @@
        <string>Buscar</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidgetProductos">
+     <widget class="QTableWidget" name="tw_productos">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -894,6 +900,9 @@
       </property>
       <property name="midLineWidth">
        <number>0</number>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
       <property name="rowCount">
        <number>0</number>
