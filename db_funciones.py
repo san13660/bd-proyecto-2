@@ -4,7 +4,7 @@ from psycopg2 import Error
 connection = None
 
 try:
-    connection = psycopg2.connect( host='localhost', user='postgres', password='basesdedatos', dbname='proyecto-2' )
+    connection = psycopg2.connect( host='localhost', user='postgres', password='CURIE123', dbname='proyecto-2' )
     
     connection.autocommit=False
 
@@ -259,57 +259,72 @@ def ingresar_factura(nit, fecha, total, lineas_factura):
             cursor.close()
         return result
 
-def consultar_facturas(id='', nit='', fecha=None): 
+def consultar_facturas(id='', nit='', fecha=''): 
     rows = []
     try:
         cursor = connection.cursor()
     
-        if id != '' and nit == '' and fecha == None:
+        if id != '' and nit == '' and fecha == '':
             cursor.execute("""
-            SELECT *
+            SELECT id, factura.nit, nombre, fecha, total 
             FROM factura
+            JOIN cliente ON factura.nit = cliente.nit
             WHERE id LIKE %s;
             """,
             (str(id) + '%',))
-        elif id == '' and nit != '' and fecha == None:
+        elif id == '' and nit != '' and fecha == '':
             cursor.execute("""
-            SELECT *
+            SELECT id, factura.nit, nombre, fecha, total 
             FROM factura
-            WHERE nit LIKE %s;
+            JOIN cliente ON factura.nit = cliente.nit
+            WHERE factura.nit LIKE %s;
             """,
             ('%' + str(nit) + '%',))
-        elif id != '' and nit != '' and fecha == None:
+        elif id == '' and nit == '' and fecha != '':
             cursor.execute("""
-            SELECT *
+            SELECT id, factura.nit, nombre, fecha, total 
             FROM factura
-            WHERE id LIKE %s and nit LIKE %s;
+            JOIN cliente ON factura.nit = cliente.nit
+            WHERE fecha = %s;
+            """,
+            (str(fecha),))
+        elif id != '' and nit != '' and fecha == '':
+            cursor.execute("""
+            SELECT id, factura.nit, nombre, fecha, total 
+            FROM factura
+            JOIN cliente ON factura.nit = cliente.nit
+            WHERE id LIKE %s and factura.nit LIKE %s;
             """,
             (str(id) + '%', '%' + str(nit) + '%',))
-        elif id != '' and nit == '' and fecha != None:
+        elif id != '' and nit == '' and fecha != '':
             cursor.execute("""
-            SELECT *
+            SELECT id, factura.nit, nombre, fecha, total 
             FROM factura
+            JOIN cliente ON factura.nit = cliente.nit
             WHERE id LIKE %s and fecha == %s;
             """,
             (str(id) + '%', str(fecha),))
-        elif id == '' and nit != '' and fecha != None:
+        elif id == '' and nit != '' and fecha != '':
             cursor.execute("""
-            SELECT *
+            SELECT id, factura.nit, nombre, fecha, total 
             FROM factura
-            WHERE nit LIKE %s and fecha == %s;
+            JOIN cliente ON factura.nit = cliente.nit
+            WHERE factura.nit LIKE %s and fecha == %s;
             """,
             ('%' + str(nit) + '%', str(fecha),))
-        elif id != '' and nit != '' and fecha != None:
+        elif id != '' and nit != '' and fecha != '':
             cursor.execute("""
-            SELECT *
+            SELECT id, factura.nit, nombre, fecha, total 
             FROM factura
-            WHERE id LIKE %s and nit LIKE %s and fecha == %s;
+            JOIN cliente ON factura.nit = cliente.nit
+            WHERE id LIKE %s and factura.nit LIKE %s and fecha == %s;
             """,
             (str(id) + '%', '%' + str(nit) + '%', str(fecha)))
         else:
             cursor.execute("""
-            SELECT *
-            FROM factura;
+            SELECT id, factura.nit, nombre, fecha, total 
+            FROM factura
+            JOIN cliente ON factura.nit = cliente.nit;
             """)
         connection.commit()
         rows = cursor.fetchall()
