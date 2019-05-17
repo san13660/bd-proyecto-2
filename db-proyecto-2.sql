@@ -5,32 +5,32 @@ CREATE TABLE cliente (
 
 CREATE TABLE factura (
 	id SERIAL PRIMARY KEY,
-	nit VARCHAR(10) REFERENCES cliente(nit),
-	fecha DATE,
+	nit VARCHAR(20) REFERENCES cliente(nit),
+	fecha TIMESTAMP,
 	total REAL);
 
 CREATE TABLE producto (
-	id VARCHAR(10) PRIMARY KEY,
-	nombre VARCHAR(50),
-	categoria VARCHAR(20),
-	marca VARCHAR(20),
+	id VARCHAR(20) PRIMARY KEY,
+	nombre VARCHAR(30),
+	categoria VARCHAR(30),
+	marca VARCHAR(50),
 	precio REAL);
 	
 
 CREATE TABLE linea_factura (
 	id SERIAL PRIMARY KEY,
 	id_factura INTEGER REFERENCES factura(id),
-	id_producto VARCHAR(10) REFERENCES producto(id),
+	id_producto VARCHAR(20) REFERENCES producto(id),
 	cantidad INTEGER,
 	sub_total REAL);
 
 CREATE TABLE tipo_custom (
 	nombre VARCHAR(30) PRIMARY KEY,
-	tipo VARCHAR(20));
+	tipo VARCHAR(30));
 	
 
 CREATE TABLE custom (
-	id_producto VARCHAR(10) REFERENCES producto(id),
+	id_producto VARCHAR(30) REFERENCES producto(id),
 	nombre_tipo_custom VARCHAR(30) REFERENCES tipo_custom(nombre),
 	valor VARCHAR(50),
 	PRIMARY KEY (id_producto, nombre_tipo_custom));
@@ -46,8 +46,8 @@ INSERT INTO cliente(nit, nombre) VALUES('88484556', 'Eduardo Gonzales');
 INSERT INTO factura(nit, fecha, total) VALUES('25685987', '2019-05-15 11:45:05', 3800.99);
 INSERT INTO producto(id, nombre, categoria, marca, precio) VALUES('1561851', 'Lavadora', 'Linea Blanca', 'LG', 3000.00);
 INSERT INTO producto(id, nombre, categoria, marca, precio) VALUES('1561895', 'Microondas', 'Linea Blanca', 'Whirlpool', 800.99);
-INSERT INTO linea_factura(id_factura, id_producto, cantidad, sub_total) VALUES('165184', '1561851', 1, 3000.00);
-INSERT INTO linea_factura(id_factura, id_producto, cantidad, sub_total) VALUES('165184', '1561895', 1, 800.99);
+INSERT INTO linea_factura(id_factura, id_producto, cantidad, sub_total) VALUES('1', '1561851', 1, 3000.00);
+INSERT INTO linea_factura(id_factura, id_producto, cantidad, sub_total) VALUES('1', '1561895', 1, 800.99);
 
 INSERT INTO tipo_custom(nombre, tipo) VALUES('color', 'string');
 INSERT INTO tipo_custom(nombre, tipo) VALUES('peso', 'float');

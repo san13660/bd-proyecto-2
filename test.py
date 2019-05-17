@@ -21,6 +21,12 @@ class Ui(QtWidgets.QMainWindow):
         self.pb_clientes_buscar.clicked.connect(self.click_buscar_clientes)
         self.pb_clientes_ingresar.clicked.connect(self.click_ingresar_cliente)
         self.pb_productos_buscar.clicked.connect(self.click_buscar_productos)
+
+        self.pb_customs_ingresar.clicked.connect(self.click_ingresar_custom)
+
+        self.pb_facturacion_simular.clicked.connect(self.click_simular)
+
+        self.agregar_columnas_custom()
         
         self.total = 0.0
         self.lineas_factura = []
@@ -163,13 +169,18 @@ class Ui(QtWidgets.QMainWindow):
         rows = consultar_productos(self.le_productos_id.text(), self.le_productos_nombre.text(), self.le_productos_categoria.text(), self.le_productos_marca.text())
         self.tw_productos.setRowCount(0)
         for row in rows:
+            print(row)
             rowPosition = self.tw_productos.rowCount()
             self.tw_productos.insertRow(rowPosition)
             self.tw_productos.setItem(rowPosition , 0, QtWidgets.QTableWidgetItem(row[0]))
             self.tw_productos.setItem(rowPosition , 1, QtWidgets.QTableWidgetItem(row[1]))
             self.tw_productos.setItem(rowPosition , 2, QtWidgets.QTableWidgetItem(row[2]))
             self.tw_productos.setItem(rowPosition , 3, QtWidgets.QTableWidgetItem(row[3]))
-            self.tw_productos.setItem(rowPosition , 4, QtWidgets.QTableWidgetItem(str(row[4])))
+            counter = 4
+            for custom in row[6]:
+                self.tw_productos.setItem(rowPosition , counter, QtWidgets.QTableWidgetItem(custom))
+                counter += 1
+            self.tw_productos.setItem(rowPosition , counter, QtWidgets.QTableWidgetItem(str(row[4])))
 
 
     def click_ingresar_cliente(self):
@@ -190,7 +201,6 @@ class Ui(QtWidgets.QMainWindow):
         if self.cb_historialventas_fecha.isChecked():
             fecha = self.de_historialventas_fecha.date().toPyDate().strftime("%Y-%m-%d %H:%M:%S")
         
-        print(fecha)
         rows = consultar_facturas(self.le_historialventas_id.text(), self.le_historialventas_nit.text(), fecha)
         
         self.tw_historialventas.setRowCount(0)
@@ -202,6 +212,51 @@ class Ui(QtWidgets.QMainWindow):
             self.tw_historialventas.setItem(rowPosition , 2, QtWidgets.QTableWidgetItem(str(row[2])))
             self.tw_historialventas.setItem(rowPosition , 3, QtWidgets.QTableWidgetItem(str(row[3].strftime("%Y-%m-%d %H:%M:%S"))))
             self.tw_historialventas.setItem(rowPosition , 4, QtWidgets.QTableWidgetItem(str(row[4])))
+
+    def click_ingresar_custom(self):
+        msg = QtWidgets.QMessageBox()
+        if ingresar_custom(self.le_customs_nombre.text(), self.combox_customs_tipodato.currentText()):
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setText("Categoria custom ingresada exitosamente.")
+            msg.setWindowTitle("Ingreso de custom")
+        else:
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Error al ingresar categoría custom.")
+            msg.setWindowTitle("Ingreso de custom")   
+        msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        msg.exec_()
+
+        self.llenar_customs()
+
+    def click_simular(self):
+        createFD(self.de_facturacion_fechasimulacion.date().toPyDate().strftime("%Y-%m-%d"))
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Simulación completada exitosamente.")
+        msg.setWindowTitle("Simulación de ventas")
+        msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        msg.exec_()
+
+    def agregar_columnas_custom(self):
+        header_labels = ['ID producto', 'Nombre', 'Categoría', 'Marca']
+        rows = consultar_customs()
+        counter = 5
+        for row in rows:
+            header_labels.append(row[0])
+            self.tw_productos.insertColumn(counter)
+            counter += 1
+        header_labels.append('Precio')
+        self.tw_productos.setHorizontalHeaderLabels(header_labels)
+
+    def llenar_customs(self):
+        rows = consultar_customs()
+
+        self.tw_customs.setRowCount(0)
+        for row in rows:
+            rowPosition = self.tw_customs.rowCount()
+            self.tw_customs.insertRow(rowPosition)
+            self.tw_customs.setItem(rowPosition , 0, QtWidgets.QTableWidgetItem(str(row[0])))
+            self.tw_customs.setItem(rowPosition , 1, QtWidgets.QTableWidgetItem(str(row[1])))
 
 
 if __name__ == '__main__':
