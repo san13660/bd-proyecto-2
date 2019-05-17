@@ -11,15 +11,16 @@ class Ui(QtWidgets.QMainWindow):
         self.pb_facturacion_ingresar.clicked.connect(self.click_ingresar_lineafactura)
         self.pb_facturacion_facturar.clicked.connect(self.click_ingresar_factura)
         self.pb_facturacion_cancelar.clicked.connect(self.click_cancelar_factura)
-        
-        self.pb_clientes_buscar.clicked.connect(self.click_buscar_clientes)
-        self.pb_clientes_ingresar.clicked.connect(self.click_ingresar_cliente)
-        self.pb_productos_buscar.clicked.connect(self.click_buscar_productos)
-
         self.le_facturacion_nit.returnPressed.connect(self.enter_nit)
         self.le_facturacion_nombre.returnPressed.connect(self.enter_nombre)
         self.le_facturacion_idproducto.returnPressed.connect(self.enter_id_producto)
         self.le_facturacion_cantidad.returnPressed.connect(self.click_ingresar_lineafactura)
+
+        self.pb_historialventas_buscar.clicked.connect(self.click_buscar_facturas)
+        
+        self.pb_clientes_buscar.clicked.connect(self.click_buscar_clientes)
+        self.pb_clientes_ingresar.clicked.connect(self.click_ingresar_cliente)
+        self.pb_productos_buscar.clicked.connect(self.click_buscar_productos)
         
         self.total = 0.0
         self.lineas_factura = []
@@ -183,6 +184,24 @@ class Ui(QtWidgets.QMainWindow):
             msg.setWindowTitle("Ingreso de cliente")   
         msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
         msg.exec_()
+
+    def click_buscar_facturas(self):
+        fecha = ''
+        if self.cb_historialventas_fecha.isChecked():
+            fecha = self.de_historialventas_fecha.date().toPyDate().strftime("%Y-%m-%d %H:%M:%S")
+        
+        print(fecha)
+        rows = consultar_facturas(self.le_historialventas_id.text(), self.le_historialventas_nit.text(), fecha)
+        
+        self.tw_historialventas.setRowCount(0)
+        for row in rows:
+            rowPosition = self.tw_historialventas.rowCount()
+            self.tw_historialventas.insertRow(rowPosition)
+            self.tw_historialventas.setItem(rowPosition , 0, QtWidgets.QTableWidgetItem(str(row[0])))
+            self.tw_historialventas.setItem(rowPosition , 1, QtWidgets.QTableWidgetItem(str(row[1])))
+            self.tw_historialventas.setItem(rowPosition , 2, QtWidgets.QTableWidgetItem(str(row[2])))
+            self.tw_historialventas.setItem(rowPosition , 3, QtWidgets.QTableWidgetItem(str(row[3].strftime("%Y-%m-%d %H:%M:%S"))))
+            self.tw_historialventas.setItem(rowPosition , 4, QtWidgets.QTableWidgetItem(str(row[4])))
 
 
 if __name__ == '__main__':
