@@ -4,7 +4,7 @@ from psycopg2 import Error
 connection = None
 
 try:
-    connection = psycopg2.connect( host='localhost', user='postgres', password='CURIE123', dbname='proyecto-2' )
+    connection = psycopg2.connect( host='localhost', user='postgres', password='basesdedatos', dbname='proyecto-2' )
     
     connection.autocommit=False
 
