@@ -129,7 +129,7 @@
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tabFacturacion">
      <property name="font">
@@ -149,22 +149,25 @@
      <widget class="QLabel" name="labelNit">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>180</x>
         <y>30</y>
-        <width>51</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>NIT</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="labelidProd">
@@ -179,7 +182,7 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -187,13 +190,16 @@
       <property name="text">
        <string>ID Producto</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLabel" name="labelNombre">
       <property name="geometry">
        <rect>
-        <x>400</x>
+        <x>370</x>
         <y>30</y>
-        <width>71</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
@@ -208,26 +214,32 @@
       <property name="text">
        <string>Nombre</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLabel" name="labelCantidad">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>370</x>
         <y>110</y>
-        <width>111</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Cantidad</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="le_facturacion_nit">
@@ -323,9 +335,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -347,9 +359,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -460,9 +472,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -484,9 +496,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -514,20 +526,23 @@
        <rect>
         <x>90</x>
         <y>40</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>ID Factura</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="le_historialventas_id">
@@ -569,22 +584,25 @@
      <widget class="QLabel" name="labelNit_2">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>260</x>
         <y>50</y>
-        <width>51</width>
+        <width>131</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>NIT</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pb_historialventas_buscar">
@@ -599,9 +617,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -682,22 +700,25 @@
      <widget class="QLabel" name="labelFecha">
       <property name="geometry">
        <rect>
-        <x>470</x>
+        <x>450</x>
         <y>50</y>
-        <width>71</width>
+        <width>121</width>
         <height>21</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Fecha</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QDateEdit" name="de_historialventas_fecha">
@@ -781,22 +802,25 @@
      <widget class="QLabel" name="labelidProd_2">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>230</x>
         <y>30</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>ID Producto</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="le_productos_nombre">
@@ -820,22 +844,25 @@
      <widget class="QLabel" name="labelNombreProd">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>400</x>
         <y>30</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Nombre</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="le_productos_marca">
@@ -861,20 +888,23 @@
        <rect>
         <x>230</x>
         <y>110</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Categoría</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="le_productos_categoria">
@@ -898,22 +928,25 @@
      <widget class="QLabel" name="labelMarca">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>400</x>
         <y>110</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Marca</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pb_productos_buscar">
@@ -928,9 +961,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1097,9 +1130,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1117,16 +1150,16 @@
      <widget class="QLabel" name="labelNombreCustom">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>160</x>
         <y>50</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -1134,26 +1167,32 @@
       <property name="text">
        <string>Nombre</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLabel" name="labeltipoDato">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>360</x>
         <y>50</y>
-        <width>171</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Tipo de dato</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QLineEdit" name="le_customs_nombre">
@@ -1281,9 +1320,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1301,22 +1340,25 @@
      <widget class="QLabel" name="l_clientes_nit">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>140</x>
         <y>50</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>NIT</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pb_clientes_buscar">
@@ -1331,9 +1373,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -1382,22 +1424,25 @@
      <widget class="QLabel" name="l_clientes_nombre">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>310</x>
         <y>50</y>
-        <width>161</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>16</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="text">
        <string>Nombre</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
      <widget class="QPushButton" name="pb_clientes_ingresar">
@@ -1412,9 +1457,9 @@
       <property name="font">
        <font>
         <family>Courier New</family>
-        <pointsize>10</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <pointsize>9</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
