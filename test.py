@@ -26,6 +26,8 @@ class Ui(QtWidgets.QMainWindow):
 
         self.pb_facturacion_simular.clicked.connect(self.click_simular)
 
+        self.pb_ingresoproductos_ingresar.clicked.connect(self.click_ingresar_producto)
+
         self.agregar_columnas_custom()
         
         self.total = 0.0
@@ -196,6 +198,24 @@ class Ui(QtWidgets.QMainWindow):
         msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
         msg.exec_()
 
+    def click_ingresar_producto(self):
+
+        id_producto = self.tw_ingresoproductos_ingreso.data(self.tw_ingresoproductos_ingreso.index(0, 0))
+        nombre = self.tw_ingresoproductos_ingreso.data(self.tw_ingresoproductos_ingreso.index(0, 1))
+        categoria = self.tw_ingresoproductos_ingreso.data(self.tw_ingresoproductos_ingreso.index(0, 2))
+        marca = self.tw_ingresoproductos_ingreso.data(self.tw_ingresoproductos_ingreso.index(0, 3))
+
+        values = []
+        rows = consultar_customs()
+        counter = 4
+        for row in rows:
+            values.append((rows[0],self.tw_ingresoproductos_ingreso.data(self.tw_ingresoproductos_ingreso.index(0, counter))))
+            counter += 1
+
+        precio = self.tw_ingresoproductos_ingreso.data(self.tw_ingresoproductos_ingreso.index(0, counter))
+
+        ingresar_producto(id_producto, nombre, categoria, marca, precio, values)
+
     def click_buscar_facturas(self):
         fecha = ''
         if self.cb_historialventas_fecha.isChecked():
@@ -244,9 +264,11 @@ class Ui(QtWidgets.QMainWindow):
         for row in rows:
             header_labels.append(row[0])
             self.tw_productos.insertColumn(counter)
+            self.tw_ingresoproductos_ingreso.insertColumn(counter)
             counter += 1
         header_labels.append('Precio')
         self.tw_productos.setHorizontalHeaderLabels(header_labels)
+        self.tw_ingresoproductos_ingreso.setHorizontalHeaderLabels(header_labels)
 
     def llenar_customs(self):
         rows = consultar_customs()

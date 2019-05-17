@@ -263,6 +263,43 @@ def ingresar_cliente(nit, nombre):
         return result
 
 
+def ingresar_producto(id_producto, nombre, categoria, marca, precio, values): 
+    result = False
+    try:
+        cursor = connection.cursor()
+    
+        cursor.execute("""
+        INSERT INTO producto(
+            id, nombre, categoria, marca, precio
+        )
+        VALUES(
+            %s, %s, %s, %s, %s
+        );
+        """,
+        (str(id_producto), str(nombre), str(categoria), str(marca), str(precio)))
+
+        for value in values:
+            cursor.execute("""
+            INSERT INTO custom(
+                id_producto, nombre_tipo_custom, valor
+            )
+            VALUES(
+                %s, %s, %s
+            );
+            """,
+            (str(id_producto), str(value[0]), str(value[1])))
+
+        connection.commit()
+        result = True
+    except (Exception, psycopg2.DatabaseError) as error :
+        print ("Error al insertar datos de clientes", error)
+        connection.rollback()
+    finally:
+        if(connection):
+            cursor.close()
+        return result
+
+
 def ingresar_custom(nombre, tipo): 
     if nombre == '' or tipo == '':
         return False
